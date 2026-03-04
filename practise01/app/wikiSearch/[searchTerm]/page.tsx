@@ -8,7 +8,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const paramsData = await params
-  const searchTerm = await decodeURIComponent(paramsData.searchTerm)
+  const searchTerm = decodeURIComponent(paramsData.searchTerm)
   const data = await getWikiResults(searchTerm)
   const displayTerm = searchTerm
 
@@ -32,7 +32,7 @@ export default async function SearchResults({ params }: Props) {
   const results: Result[] | undefined = data?.query?.pages
 
   const content = (
-    <main className='bg-slate-200 mx-auto max-w-lg py-1 min-h-screen'>
+    <main className='bg-slate-200 min-w-1/2 mx-auto max-w-lg py-1 min-h-screen'>
       {results && Object.values(results).length > 0 ? (
         Object.values(results).map((result) => (
           <Item key={result.pageid} result={result} />

@@ -24,7 +24,7 @@ export default function Search() {
         type='text'
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder='Search...'
+        placeholder=' Wiki Search...'
         className='p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
       />
       <button className='p-2 text-xl rounded-xl bg-slate-300 ml-2 font-bold disabled:opacity-60'>

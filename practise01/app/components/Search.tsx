@@ -6,7 +6,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 export default function Search() {
   const router = useRouter()
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   const currentSearch = pathname.startsWith('/wikiSearch/')
     ? decodeURIComponent(pathname.split('/wikiSearch/')[1] || '')

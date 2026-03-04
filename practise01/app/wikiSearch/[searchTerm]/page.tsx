@@ -32,13 +32,13 @@ export default async function SearchResults({ params }: Props) {
   const results: Result[] | undefined = data?.query?.pages
 
   const content = (
-    <main className='bg-slate-200 min-w-1/2 mx-auto max-w-lg py-1 min-h-screen'>
+    <main className='bg-slate-200 min-w-1/2 flex flex-col items-center mx-auto max-w-lg py-1 min-h-screen'>
       {results && Object.values(results).length > 0 ? (
         Object.values(results).map((result) => (
           <Item key={result.pageid} result={result} />
         ))
       ) : (
-        <h2 className='p-2 text-xl'>{`${searchTerm} Not Found`}</h2>
+        <h2 className='p-2 text-xl text-justify mx-auto'>{`${searchTerm} Not Found`}</h2>
       )}
     </main>
   )

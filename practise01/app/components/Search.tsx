@@ -1,17 +1,33 @@
 'use client'
 
-import { useState, SubmitEvent, useTransition } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, SubmitEvent, useTransition, useEffect } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 export default function Search() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  const currentSearch = pathname.startsWith('/wikiSearch/')
+    ? decodeURIComponent(pathname.split('/wikiSearch/')[1] || '')
+    : ''
+
   const [search, setSearch] = useState('')
   const [isPending, startTransition] = useTransition()
-  const router = useRouter()
+
+  useEffect(() => {
+    setSearch(currentSearch)
+  }, [currentSearch])
 
   const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
     const trimmedSearch = search.trim()
-    if (!trimmedSearch) return
+    if (!trimmedSearch) {
+      startTransition(() => {
+        router.push('/')
+      })
+      return
+    }
 
     startTransition(() => {
       router.push(`/wikiSearch/${encodeURIComponent(trimmedSearch)}`)

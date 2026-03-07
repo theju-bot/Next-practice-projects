@@ -16,19 +16,17 @@ export async function generateMetadata({
 }: {
   params: Promise<{ postId: string }>
 }) {
-  const posts = getSortedPostsData()
   const { postId } = await params
+  const { title } = await getPostData(postId)
 
-  const post = posts.find((post) => post.id === postId)
-
-  if (!post) {
+  if (!title) {
     return {
       title: 'Post Not Found',
     }
   }
 
   return {
-    title: post.title,
+    title,
   }
 }
 

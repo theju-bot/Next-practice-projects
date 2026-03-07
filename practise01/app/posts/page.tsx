@@ -1,4 +1,10 @@
 import Posts from './components/Posts'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Posts',
+  description: 'Posts page of the Next.js practise project',
+}
 
 export default function Home() {
   return (

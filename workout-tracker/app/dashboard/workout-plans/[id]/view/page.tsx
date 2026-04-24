@@ -207,7 +207,7 @@ export default function ViewWorkoutPlanPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className='text-2xl font-bold'>{totalVolume.toFixed(0)} lbs</p>
+              <p className='text-2xl font-bold'>{totalVolume.toFixed(0)} Kg</p>
             </CardContent>
           </Card>
         </div>
@@ -268,7 +268,7 @@ export default function ViewWorkoutPlanPage() {
                           WEIGHT
                         </p>
                         <p className='text-lg font-semibold'>
-                          {exercise.weight} lbs
+                          {exercise.weight} Kg
                         </p>
                       </div>
 
@@ -278,7 +278,7 @@ export default function ViewWorkoutPlanPage() {
                         </p>
                         <p className='text-lg font-semibold'>
                           {(exercise.sets * exercise.reps * exercise.weight).toFixed(0)}{' '}
-                          lbs
+                          Kg
                         </p>
                       </div>
                     </div>
